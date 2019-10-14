@@ -18,4 +18,5 @@ home-plugins/05_notifications/index.php<br>
 lib/shell/index.php<br>
 home-plugins/05_notifications/index.php<br>
 login-plugins/01_internet-info/index.php<br>
-login-plugins/05_check-dash/index.php
+login-plugins/05_check-dash/index.php<br>
+lib/range_icons/index.php
