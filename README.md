@@ -1,0 +1,15 @@
+# server-admin-page-modules
+several modules that are less dependent on my configuration<br><br>
+net-wifi -> control wicd<br>
+power -> halt, reboot or suspend server<br>
+storage -> list free/used space on disks and ramdisks<br>
+sys-clock -> display clock and sync by ntpdate-debian<br>
+sys-notifications -> control notify-daemon<br>
+sys-sensors -> list `sensors`<br>
+sys-updates -> update apt database (dependent of apt-check)<br>
+sys-users -> list logged users and kick selected<br><br>
+home plugins:<br>
+notifications -> get notifications from notify-daemon<br><br>
+login plugins:<br>
+internet-info -> list public IPv4<br>
+check-dash -> check if dash is installed (for shellscripts)
