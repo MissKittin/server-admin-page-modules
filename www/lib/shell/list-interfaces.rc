@@ -1,0 +1,39 @@
+# Interface listing library
+
+case $1 in
+	'interfaces')
+		SETTINGS=`firewall.sh where-are-you`
+		. $SETTINGS/networks.rc
+		case $2 in
+			'wan')
+				IFACE=$WAN
+			;;
+			'lan')
+				IFACE=$LAN
+			;;
+			'ppp')
+				IFACE=$PPP
+			;;
+			'1gbps')
+				IFACE=$G1
+			;;
+			'100mbps')
+				IFACE=$M100
+			;;
+			'wifi')
+				eval `cat /etc/hostapd/hostapd.conf | grep interface=. | grep -v ctrl`
+				IFACE=$interface
+			;;
+			'wifi-in')
+				eval `cat /etc/wicd/manager-settings.conf | grep 'wireless_interface = ' | tr -d ' '`
+				IFACE=$wireless_interface
+			;;
+		esac
+		if [ "$3" = 'print' ]; then
+			echo -n "$IFACE"
+		else
+			[ "`ifconfig $IFACE`" = '' ] && echo -n '<span style="color: #ff0000;">Not connected</span>' && exit 0
+			ifconfig $IFACE
+		fi
+	;;
+esac

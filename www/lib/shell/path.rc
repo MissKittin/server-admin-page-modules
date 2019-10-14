@@ -1,0 +1,3 @@
+# Set PATH globally for all scripts
+
+export PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin:/usr/local/sbin

@@ -1,0 +1,19 @@
+# Check public ip library
+
+case $1 in
+	'check-internet')
+		ip=$(wget -4 -q -O- --timeout=2 http://ipinfo.io/ip)
+		[ "$2" = 'on-dashboard' ] && newline='-n' || newline='' # no newline if displayed on dashboard
+		if echo -n "$ip" | grep -E '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$' > /dev/null 2>&1; then # if ip is correct
+			if [ "$2" = 'on-dashboard' ]; then # parse for dashboard
+				echo "IPv4 Internet connection: yes, public IP: ${ip}<br>"
+			else # parse for login screen
+				echo 'IPv4 Internet connection: yes<br>'
+				echo "Public IP: $ip"
+			fi
+		else # no ipv4 internet
+			echo $newline 'Internet connection: no'
+			[ "$2" = 'on-dashboard' ] && echo '<br>'
+		fi
+	;;
+esac
