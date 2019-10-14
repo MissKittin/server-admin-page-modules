@@ -1,6 +1,6 @@
 # server-admin-page-modules
 several modules that are less dependent on my configuration<br><br>
-net-wifi -> control wicd<br>
+net-wifi -> control wicd (dependent of jquery: download jquery and put it in lib/jquery.js<br>
 power -> halt, reboot or suspend server<br>
 storage -> list free/used space on disks and ramdisks<br>
 sys-clock -> display clock and sync by ntpdate-debian<br>
