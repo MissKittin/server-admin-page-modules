@@ -12,4 +12,10 @@ home plugins:<br>
 notifications -> get notifications from notify-daemon<br><br>
 login plugins:<br>
 internet-info -> list public IPv4<br>
-check-dash -> check if dash is installed (for shellscripts)
+check-dash -> check if dash is installed (for shellscripts)<br><br>
+links to lib/prevent-index.php:<br>
+home-plugins/05_notifications/index.php<br>
+lib/shell/index.php<br>
+home-plugins/05_notifications/index.php<br>
+login-plugins/01_internet-info/index.php<br>
+login-plugins/05_check-dash/index.php
