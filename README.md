@@ -20,8 +20,9 @@ home-plugins/05_notifications/index.php<br>
 login-plugins/01_internet-info/index.php<br>
 login-plugins/05_check-dash/index.php<br>
 lib/range_icons/index.php<br><br>
-screenshots:<br>
+
+# screenshots
 storage<br>
-![alt text](https://github.com/MissKittin/server-admin-page-modules/blob/master/storage.png)<br>
+![alt text](https://github.com/MissKittin/server-admin-page-modules/blob/master/storage.png)<br><br>
 sys-notifications<br>
 ![alt text](https://github.com/MissKittin/server-admin-page-modules/blob/master/sys-notifications.png)
