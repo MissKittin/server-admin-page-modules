@@ -1,4 +1,5 @@
 #!/bin/dash
+# Command stack: notify-daemon-state.sh, notify-daemon.sh, mv, grep, sed
 
 # Import PATH variable
 . ./lib/shell/path.rc

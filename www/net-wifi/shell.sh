@@ -1,4 +1,10 @@
 #!/bin/dash
+# Command stack: tr, wicd-cli, cat, grep, ifconfig, touch, rm
+
+# Settings
+WICD_SAVED_APS='/etc/wicd/wireless-settings.conf'
+WICD_SETTINGS='/etc/wicd/manager-settings.conf'
+WICD_STATUS_COMMAND='/etc/init.d/wicd'
 
 # Import PATH variable
 . ../lib/shell/path.rc
@@ -26,7 +32,7 @@ case $1 in
 				# Parser
 				buttons_add_connect()
 				{
-					if cat /etc/wicd/wireless-settings.conf | grep "$2" > /dev/null 2>&1; then
+					if cat ${WICD_SAVED_APS} | grep "$2" > /dev/null 2>&1; then
 						echo -n '<td><button name="connect" type="submit" value="'"$1"'">Connect</button></td>'
 					else
 						echo '<td><button name="add" type="submit" value="'"$1"'">Add</button></td><td><input type="password" name="password"></td>'
@@ -38,17 +44,17 @@ case $1 in
 					range=`print_S2 $value`
 
 					if [ "$range" -le '50' ]; then
-						echo -n '<img src="'"$3"'/lib/range_icons/range_0.png" alt="range">'
+						echo -n '<img src="'"$3"'/range_0.png" alt="range">'
 					elif [ "$range" -le '60' ]; then
-						echo -n '<img src="'"$3"'/lib/range_icons/range_1.png" alt="range">'
+						echo -n '<img src="'"$3"'/range_1.png" alt="range">'
 					elif [ "$range" -le '70' ]; then
-						echo -n '<img src="'"$3"'/lib/range_icons/range_2.png" alt="range">'
+						echo -n '<img src="'"$3"'/range_2.png" alt="range">'
 					elif [ "$range" -le '80' ]; then
-						echo -n '<img src="'"$3"'/lib/range_icons/range_3.png" alt="range">'
+						echo -n '<img src="'"$3"'/range_3.png" alt="range">'
 					elif [ "$range" -le '90' ]; then
-						echo -n '<img src="'"$3"'/lib/range_icons/range_4.png" alt="range">'
+						echo -n '<img src="'"$3"'/range_4.png" alt="range">'
 					elif [ "$range" -gt '90' ]; then
-						echo -n '<img src="'"$3"'/lib/range_icons/range_5.png" alt="range">'
+						echo -n '<img src="'"$3"'/range_5.png" alt="range">'
 					fi
 				}
 				parse_list_networks()
@@ -62,7 +68,7 @@ case $1 in
 				}
 
 				# Check if wifi card connected
-				eval `cat /etc/wicd/manager-settings.conf | grep 'wireless_interface = ' | tr -d ' '`
+				eval `cat ${WICD_SETTINGS} | grep 'wireless_interface = ' | tr -d ' '`
 				if ! ifconfig -a | grep "$wireless_interface" > /dev/null 2>&1; then
 					echo '<tr><td colspan="4"><span style="color: #aa0000;">WiFi card not connected</span></td></tr>'
 					exit 0
@@ -99,18 +105,18 @@ case $1 in
 			;;
 			'print-connected')
 				# Check if wifi card connected
-				eval `cat /etc/wicd/manager-settings.conf | grep 'wireless_interface = ' | tr -d ' '`
+				eval `cat ${WICD_SETTINGS} | grep 'wireless_interface = ' | tr -d ' '`
 				if ! ifconfig -a | grep "$wireless_interface" > /dev/null 2>&1; then
 					exit 1
 				fi
 
 				# Check if wicd running
-				/etc/init.d/wicd status > /dev/null 2>&1 || exit 1
+				${WICD_STATUS_COMMAND} status > /dev/null 2>&1 || exit 1
 
 				# must wait
 				sleep 1
 
-				eval `cat /etc/wicd/manager-settings.conf | grep 'wireless_interface = ' | tr -d ' '`
+				eval `cat ${WICD_SETTINGS} | grep 'wireless_interface = ' | tr -d ' '`
 				print_S4()
 				{
 					echo -n "$4"

@@ -1,4 +1,5 @@
 <?php include($system_location_php . '/lib/login/login.php'); ?>
+<?php include('config.php'); ?>
 <?php chdir($system_location_php); ?>
 <!DOCTYPE html>
 <html>
@@ -47,16 +48,10 @@
 				<h1>RAM disks</h1>
 				<table>
 					<tr><th>TmpFs</th><th>Size</th><th>Used</th><th>Avail</th><th>Percentage</th><th>Used</th></tr>
-					<?php echo shell_exec($system_location_php . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh disk_usage tmp nodev'); ?>
-					<?php echo shell_exec($system_location_php . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh disk_usage udev nodev'); ?>
-					<?php echo shell_exec($system_location_php . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh disk_usage log nodev'); ?>
-					<?php echo shell_exec($system_location_php . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh disk_usage spool nodev'); ?>
-					<?php echo shell_exec($system_location_php . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh disk_usage homes nodev'); ?>
-					<?php /* Additional FSs */ ?>
-					<?php echo shell_exec($system_location_php . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh disk_usage php nodev'); ?>
-					<?php echo shell_exec($system_location_php . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh disk_usage dhcp nodev'); ?>
-					<?php echo shell_exec($system_location_php . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh disk_usage nfs nodev'); ?>
-					<?php echo shell_exec($system_location_php . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh disk_usage sudo nodev'); ?>
+					<?php
+						foreach($ram_disks as $ram_disk)
+							echo shell_exec($system_location_php . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh disk_usage ' . $ram_disk . ' nodev');
+					?>
 				</table>
 				<h1>RAM usage</h1>
 				<table>

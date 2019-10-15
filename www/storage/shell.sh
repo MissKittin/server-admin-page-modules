@@ -1,4 +1,5 @@
 #!/bin/dash
+# Command stack: df, tail, grep, sort, free
 
 # Import PATH variable
 . ./lib/shell/path.rc

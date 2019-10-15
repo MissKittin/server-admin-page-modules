@@ -1,4 +1,5 @@
 #!/bin/dash
+# Command stack: sed, last, grep, who
 
 # Import PATH variable
 . ./lib/shell/path.rc
