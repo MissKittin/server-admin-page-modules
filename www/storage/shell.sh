@@ -1,5 +1,7 @@
 #!/bin/dash
 # Command stack: df, tail, grep, sort, free
+# free from procps-ng 3.3.12
+# html comments are outdated
 
 # Import PATH variable
 . ./lib/shell/path.rc
@@ -98,8 +100,8 @@ case $1 in
 						<td id=\"ram-usage\">$3</td><!-- used -->
 						<td>$2</td><!-- total -->
 						<td>$5</td><!-- shr -->
-						<td>$6</td><!-- buff -->
-						<td style=\"color: #8F00FF;\">$7</td><!-- cchd -->
+						<td style=\"color: #8F00FF;\">$6</td><!-- buff -->
+						<td>$7</td><!-- cchd -->
 						<td>`$0 ram_usage_bars $1`</td>
 					</tr>"
 				;;
@@ -116,26 +118,36 @@ case $1 in
 
 		fquery()
 		{
+			### if input data is about swap, calculate bar percent ((used*100)/(free+used))
+			### else
+			### calculate bar percent for mem: ((used*100)/total)
+			### calculate bar cached for mem: ((buff_cache*100)/total)
+			### color bars
+			### create bars: two (usage and cache) for mem, one (usage) for swap
+
 			## $1(Mem:) $2(1031716) $3(487920) $4(543796) $5(0) $6(13084)
 			# Parameters
-			[ "$1" = '-/+' ] && \
+			[ "$1" = 'Swap:' ] && \
 				BAR_PERCENT=$((($3*100)/($4+$3))) || \
 				BAR_PERCENT=$((($3*100)/$2))
-			[ "$1" = '-/+' ] || \
-				BAR_CACHED=$((($7*100)/$2))
+			[ "$1" = 'Swap:' ] || \
+				BAR_CACHED=$((($6*100)/$2))
+
 			# Color bars
 			BAR_COLOR=$CGREEN
 			[ "$BAR_PERCENT" -ge 60 ] && \
 				BAR_COLOR=$CYELLOW || \
 			[ "$BAR_PERCENT" -ge 80 ] && \
 				BAR_COLOR=$CRED
+
 			# Create bar
 			BAR='<div class="bar-out" style="margin-bottom: 1px;">
 				<div id="ram-bar-usage" class="bar" style="width: '"$BAR_PERCENT"'px; background-color: #'"$BAR_COLOR"';"></div><!-- used -->
-			</div>
-			<div class="bar-out">
-				<div id="ram-bar-cached" class="bar" style="width: '"$BAR_CACHED"'px; background-color: #8F00FF;"></div><!-- cached -->
 			</div>'
+			[ "$1" = 'Swap:' ] || \
+				BAR="$BAR"'<div class="bar-out">
+					<div id="ram-bar-cached" class="bar" style="width: '"$BAR_CACHED"'px; background-color: #8F00FF;"></div><!-- cached -->
+				</div>'
 
 			# Print
 			echo "$BAR"
