@@ -28,9 +28,7 @@
 		<script type="text/javascript">
 			function start()
 			{
-				var RamBarUsageColor=document.getElementById("ram-bar-usage").style.backgroundColor;
-				document.getElementById("ram-usage").style.color=RamBarUsageColor;
-
+				document.getElementById("ram-usage").style.color=document.getElementById("ram-bar-usage").style.backgroundColor;
 				return;
 			}
 		</script>
@@ -55,7 +53,7 @@
 				</table>
 				<h1>RAM usage</h1>
 				<table>
-					<tr><th>Type</th><th>Used</th><th>Total</th><th>Shr</th><th>Buff</th><th>Cchd</th><th>Percentage</th></tr>
+					<tr><th>Type</th><th>Used</th><th>Total</th><th>Shr</th><th>Cchd</th><th>Avail</th><th>Percentage</th></tr>
 					<?php echo shell_exec($system_location_php . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh ram_usage'); ?>
 				</table>
 			</div>
