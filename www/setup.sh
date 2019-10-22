@@ -35,6 +35,7 @@ chmod 755 shell.sh
 
 echo '15_check-js'
 cd ../15_check-js
+rm index.php
 ln -s ../../lib/prevent-index.php index.php
 
 echo 'net-wifi'
