@@ -3,7 +3,7 @@
 	if(isset($_GET['wifi']))
 	{
 		echo '<table><tr><th>Name</th><th>MAC</th><th>Channel</th><th>Range</th></tr>';
-		echo shell_exec($system_location_php . str_replace('shell.php', '', strtok($_SERVER['REQUEST_URI'], '?')) . 'shell.sh wifi list-aps ' . $system_location_php);
+		echo shell_exec($system_location_php . str_replace('shell.php', '', strtok($_SERVER['REQUEST_URI'], '?')) . 'shell.sh wifi list-aps ' . $system_location_php . '/lib/range_icons');
 		echo '</table>';
 	}
 	else

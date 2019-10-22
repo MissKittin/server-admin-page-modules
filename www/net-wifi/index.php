@@ -19,38 +19,34 @@
 	<head>
 		<title>WiFi</title>
 		<?php include($system_location_php . '/lib/htmlheaders.php'); ?>
-		<script type="text/javascript" src="<?php echo $system_location_html; ?>/lib/jquery.js"></script>
+		<?php include($system_location_php . '/lib/opt_htmlheaders/jquery.php'); ?>
 		<style type="text/css">
 			tr {
 				text-align: center;
 			}
 		</style>
 		<script type="text/javascript">
-			$(document).ready(
-				function()
-				{
-					$('#networks-list').load('<?php echo $system_location_html; ?>/net-wifi/shell.php?wifi');
-					list_refresh();
-				}
-			);
+			$(document).ready(function(){
+				$('#networks-list').load('<?php echo $system_location_html; ?>/net-wifi/shell.php?wifi');
+				console.log('network list preloaded');
+				list_refresh();
+				console.log('list updating loop started');
+			});
 			function list_refresh()
 			{
-				setTimeout(
-					function()
-					{
-						$('#networks-list').html('<table><tr><th>Name</th><th>MAC</th><th>Channel</th><th>Range</th></tr><tr><td colspan="4">Scanning...</td></tr></table>');
-						$('#networks-list').load('<?php echo $system_location_html; ?>/net-wifi/shell.php?wifi');
-						list_refresh();
-					}
-				, 14400)
+				setTimeout(function(){
+					$('#networks-list').html('<table><tr><th>Name</th><th>MAC</th><th>Channel</th><th>Range</th></tr><tr><td colspan="4">Scanning...</td></tr></table>');
+					$('#networks-list').load('<?php echo $system_location_html; ?>/net-wifi/shell.php?wifi');
+					list_refresh();
+				}, 14400)
 			}
 			function manual_refresh()
 			{
+				console.log('updating list manually...');
 				$('#networks-list').html('<table><tr><th>Name</th><th>MAC</th><th>Channel</th><th>Range</th></tr><tr><td colspan="4">Scanning...</td></tr></table>');
 				$('#networks-list').load('<?php echo $system_location_html; ?>/net-wifi/shell.php?wifi');
 			}
 		</script>
-
 	</head>
 	<body>
 		<?php include($system_location_php . '/lib/header.php'); ?>
@@ -62,7 +58,13 @@
 					<div id="networks-list"><?php /* content is only temporary for layout */ ?>
 						<table>
 							<tr><th>Name</th><th>MAC</th><th>Channel</th><th>Range</th></tr>
-							<tr><td colspan="4">Starting...</td></tr>
+							<tr><td colspan="4">
+								<span id="jawaskript" style="color: #ff0000;">Enable javascript</span>
+								<script>
+									document.getElementById('jawaskript').style.color='#000000';
+									document.getElementById('jawaskript').innerHTML='Scanning...';
+								</script>
+							</td></tr>
 						</table>
 					</div>
 					<br>

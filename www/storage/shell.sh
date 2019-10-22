@@ -74,34 +74,43 @@ case $1 in
 	'ram_usage')
 		fquery()
 		{
+			# Settings
+			label="$1"
+			total="$2"
+			used="$3"
+			free="$4"
+			shared="$5"
+			buff_cache="$6"
+			avail="$7"
+
 			case $1 in
-				'-/+') # Buff
-					echo "<tr>
-						<td>Buff: </td>
-						<td>$3</td><!-- used -->
-						<td>$4</td><!-- total -->
-						<!-- --><td></td><td></td><td></td><!-- -->
-						<td>`$0 ram_usage_bars $1`</td>
-					</tr>"
-				;;
-				'Swap:') # Swap
+				#'-/+') # Buff
+				#	echo "<tr>
+				#		<td>Buff: </td>
+				#		<td>$3</td><!-- used -->
+				#		<td>$4</td><!-- total -->
+				#		<!-- --><td></td><td></td><td></td><!-- -->
+				#		<td>`$0 ram_usage_bars $1`</td>
+				#	</tr>"
+				#;;
+				'Swap:')
 					[ "$2" = "0B" ] || \
 					echo "<tr>
-						<td>$1 </td><!-- Swap: -->
-						<td>$3</td><!-- used -->
-						<td>$2</td><!-- total -->
-						<!-- --><td></td><td></td><td></td><!-- -->
+						<td>$label </td>
+						<td>$used</td>
+						<td>$total</td>
+						<!-- --><td></td><td></td><td></td><!-- no output -->
 						<td>`$0 ram_usage_bars $1`</td>
 					</tr>"
 				;;
 				*) # Mem
 					echo "<tr>
-						<td>$1 </td><!-- Mem: -->
-						<td id=\"ram-usage\">$3</td><!-- used -->
-						<td>$2</td><!-- total -->
-						<td>$5</td><!-- shr -->
-						<td style=\"color: #8F00FF;\">$6</td><!-- buff -->
-						<td>$7</td><!-- cchd -->
+						<td>$label </td>
+						<td id=\"ram-usage\">$used</td>
+						<td>$total</td>
+						<td>$shared</td>
+						<td style=\"color: #8F00FF;\">$buff_cache</td>
+						<td>$avail</td>
 						<td>`$0 ram_usage_bars $1`</td>
 					</tr>"
 				;;
@@ -118,6 +127,12 @@ case $1 in
 
 		fquery()
 		{
+			# Settings
+			total="$2"
+			used="$3"
+			free="$4"
+			buff_cache="$6"
+
 			### if input data is about swap, calculate bar percent ((used*100)/(free+used))
 			### else
 			### calculate bar percent for mem: ((used*100)/total)
@@ -125,13 +140,12 @@ case $1 in
 			### color bars
 			### create bars: two (usage and cache) for mem, one (usage) for swap
 
-			## $1(Mem:) $2(1031716) $3(487920) $4(543796) $5(0) $6(13084)
 			# Parameters
 			[ "$1" = 'Swap:' ] && \
-				BAR_PERCENT=$((($3*100)/($4+$3))) || \
-				BAR_PERCENT=$((($3*100)/$2))
+				BAR_PERCENT=$((($used*100)/($free+$used))) || \
+				BAR_PERCENT=$((($used*100)/$total))
 			[ "$1" = 'Swap:' ] || \
-				BAR_CACHED=$((($6*100)/$2))
+				BAR_CACHED=$((($buff_cache*100)/$total))
 
 			# Color bars
 			BAR_COLOR=$CGREEN

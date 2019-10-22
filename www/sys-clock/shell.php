@@ -1,0 +1,7 @@
+<?php $session_regenerate=false; include($system_location_php . '/lib/login/login.php'); unset($session_regenerate); ?>
+<?php
+	if(isset($_GET['hwclock']))
+		echo shell_exec('date "+%d.%m.%Y %H:%M:%S"');
+	else
+		include($system_location_php . '/lib/prevent-direct.php'); prevent_direct('shell.php');
+?>

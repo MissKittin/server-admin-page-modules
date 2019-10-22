@@ -1,7 +1,11 @@
 #!/bin/dash
 
 # Import PATH variable
-. ./lib/shell/path.rc
+if [ -e ./lib/shell/path.rc ]; then
+	. ./lib/shell/path.rc
+else
+	. ../lib/shell/path.rc
+fi
 
 case $1 in
 	'sensors')

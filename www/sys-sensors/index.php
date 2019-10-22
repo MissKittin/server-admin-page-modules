@@ -5,6 +5,21 @@
 	<head>
 		<title>Sensors</title>
 		<?php include($system_location_php . '/lib/htmlheaders.php'); ?>
+		<?php include($system_location_php . '/lib/opt_htmlheaders/jquery.php'); ?>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				statsRefresh();
+				console.log('stats updating loop started');
+			});
+
+			function statsRefresh()
+			{
+				setTimeout(function(){
+					$('#sensors').load('<?php echo $system_location_html; ?>/sys-sensors/shell.php?sensors');
+					statsRefresh();
+				}, 400)
+			}
+		</script>
 	</head>
 	<body>
 		<?php include($system_location_php . '/lib/header.php'); ?>
@@ -12,10 +27,9 @@
 			<?php include($system_location_php . '/lib/menu/menu.php'); ?>
 			<div id="content">
 				<h1>Hardware sensors</h1>
-				<!-- <table>
-					<tr><th>Name</th><th>Value</th></tr> -->
+				<div id="sensors">
 					<pre><?php echo shell_exec($system_location_php . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh sensors'); ?></pre>
-				<!-- </table> -->
+				</div>
 			</div>
 		</div>
 	</body>

@@ -11,6 +11,11 @@ cd ../../lib/range_icons
 rm index.php
 ln -s ../prevent-index.php index.php
 
+echo 'opt_htmlheaders'
+cd ../opt_htmlheaders
+rm index.php
+ln -s ../prevent-index.php index.php
+
 echo 'shell libs'
 cd ../shell
 rm index.php
@@ -27,6 +32,10 @@ cd ../05_check-dash
 rm index.php
 ln -s ../../lib/prevent-index.php index.php
 chmod 755 shell.sh
+
+echo '15_check-js'
+cd ../15_check-js
+ln -s ../../lib/prevent-index.php index.php
 
 echo 'net-wifi'
 cd ../../net-wifi
