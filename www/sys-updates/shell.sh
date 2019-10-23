@@ -15,6 +15,9 @@ case $1 in
 	'updates')
 		apt-check -h -c -f 2>&1
 	;;
+	'last-update')
+		stat --format=%y /var/cache/apt/pkgcache.bin
+	;;
 	'system-eol')
 		# Get it from notify-daemon
 		home_dir=`notify-daemon.sh print-home-dir`
