@@ -27,7 +27,7 @@
 			<?php include($system_location_php . '/lib/menu/menu.php'); ?>
 			<div id="content">
 				<h1>System updates</h1>
-				Last update: 22 May 2018 <button onclick="javascript:update();">Update</button><br><br>
+				Last update: <?php echo shell_exec($system_location_php . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh last-update'); ?> <button onclick="javascript:update();">Update</button><br><br>
 				<span style="font-size: 20px;">
 					<?php echo shell_exec($system_location_php . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh updates'); ?>
 				</span><br><br>
