@@ -3,5 +3,7 @@
 	if(isset($_GET['hwclock']))
 		echo shell_exec('date "+%d.%m.%Y %H:%M:%S"');
 	else
+	{
 		include($system_location_php . '/lib/prevent-direct.php'); prevent_direct('shell.php');
+	}
 ?>
