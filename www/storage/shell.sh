@@ -1,7 +1,6 @@
 #!/bin/dash
 # Command stack: df, tail, grep, sort, free
 # free from procps-ng 3.3.12
-# html comments are outdated
 
 # Import PATH variable
 . ./lib/shell/path.rc
@@ -20,13 +19,12 @@ case $1 in
 			case $6 in
 				'/')
 					MOUNTPOINT=' root'
-					DEVICE='sda1'
 				;;
 				*)
 					MOUNTPOINT=`echo $6 | sed -e 's\/media/\ \g'`
-					DEVICE=`echo $1 | sed -e 's\/dev/\ \g'`
 				;;
 			esac
+			DEVICE=`echo $1 | sed -e 's\/dev/\ \g'`
 			BAR_PERCENT=`echo $5 | sed -e 's/%/px/g'`
 			# Color bars
 			BAR_COLOR=$CGREEN
