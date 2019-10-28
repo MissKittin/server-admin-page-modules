@@ -50,29 +50,6 @@
 				exit();
 			break;
 			case 'getNetworkList':
-				/* testy
-				//$networks=array();
-				$networks=['compaq-ap'];
-
-				$networkListInd=0;
-				$networkListEmpty=true;
-				foreach($networks as $network)
-				{
-					$networkList[$networkListInd]['name']=htmlspecialchars($network);
-					$networkList[$networkListInd]['strength']='-51dbm';
-					$networkList[$networkListInd]['security']='WPA2';
-					$networkList[$networkListInd]['channel']='1';
-					$networkList[$networkListInd]['mac']='fc:aa:14:93:56:e8';
-					$networkListInd++;
-					$networkListEmpty=false;
-				}
-				sleep(1);
-				if($networkListEmpty)
-					echo json_encode(array());
-				else
-					echo json_encode($networkList);
-				*/
-
 				$networkListInd=0;
 				$networkListEmpty=true;
 				$networks=explode(PHP_EOL, shell_exec($wicd_root . 'shell.sh wicd getNetworkList'));
