@@ -230,7 +230,7 @@ function wicd_getNetworkList()
 									<br>\
 									<img src="<?php echo $_GET['icons']; ?>/' + value.qualityImg + '" alt="quality" class="wicd_contentNetworksNetworkSignaliconQualityImg">\
 								</div>\
-								<div>'
+								<div class="wicd_contentNetworksNetworkDetails">'
 									+ value.mac + /* ' ' + value.quality + */ ' ' + value.encryption + ' Channel ' + value.channel + '<br>'
 									+ autoconnectCheckbox
 									+ outputButton
