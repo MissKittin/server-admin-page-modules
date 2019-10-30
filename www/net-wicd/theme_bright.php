@@ -46,4 +46,11 @@
 	}
 	.wicd_contentNetworksNetworkName {
 		font-weight: bold;
+		color: #000000;
+	}
+	.wicd_contentNetworksNetworkDetails {
+		color: #000000;
+	}
+	#wicd_status {
+		color: #000000;
 	}
