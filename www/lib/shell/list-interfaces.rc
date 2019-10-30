@@ -32,7 +32,7 @@ case $1 in
 		if [ "$3" = 'print' ]; then
 			echo -n "$IFACE"
 		else
-			[ "`ifconfig $IFACE`" = '' ] && echo -n '<span style="color: #ff0000;">Not connected</span>' && exit 0
+			[ "$(ifconfig $IFACE 2>/dev/null)" = '' ] && echo -n '<span class="content_warning">Not connected</span>' && exit 0
 			ifconfig $IFACE
 		fi
 	;;

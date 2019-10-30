@@ -6,7 +6,7 @@
 
 	// config
 	$wicd_range_icons=$system['location_html'] . '/lib/range_icons'; // path to range icons
-	$wicd_theme='default';
+	$wicd_theme='bright';
 
 	// path settings
 	$wicd_root_php=$system['location_php'] . strtok($_SERVER['REQUEST_URI'], '?');
@@ -29,9 +29,9 @@
 	</head>
 	<body>
 		<?php include($system['location_php'] . '/lib/header.php'); ?>
-		<div>
+		<div id="system_body">
 			<?php include($system['location_php'] . '/lib/menu/menu.php'); ?>
-			<div id="content">
+			<div id="system_content">
 				<?php include($wicd_root_php . '/body.php'); ?>
 				<div id="wicd_margin"></div>
 			</div>

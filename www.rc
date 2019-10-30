@@ -1,0 +1,29 @@
+# Parse notifies to web page
+parser_name='www'
+
+parse_to_www()
+{
+	# &#10148; - arrow '->', normal notify
+	# &#9888;  - triangle, warning notify
+	# &#9940;  - denied icon '-', alarm notify
+	# &#9760;  - corpse's skull, fatal notify
+	arrow='&#10148;'
+	triangle='&#9888;'
+	denied='&#9940;'
+	corpse='&#9760;'
+
+	case $3 in
+		'critical')
+			echo "${corpse} ${4}<br>"
+		;;
+		'high')
+			echo "${denied} "'<a href="?remove-notify='"$1"'" class="content_noDecorations">'"$4"'</a><br>'
+		;;
+		'medium')
+			echo "${triangle} "'<a href="?remove-notify='"$1"'" class="content_noDecorations">'"$4"'</a><br>'
+		;;
+		'low')
+			echo "${arrow} "'<a href="?remove-notify='"$1"'" class="content_noDecorations">'"$4"'</a><br>'
+		;;
+	esac
+}

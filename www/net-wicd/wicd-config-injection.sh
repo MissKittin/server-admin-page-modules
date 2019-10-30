@@ -76,7 +76,7 @@ wicd_renameConfigValue()
 wicd_addConfigValue()
 {
 	#$1->ap_mac $2->variable $3->value
-	#adding entry before [mac] start
+	#adding entry after [mac]
 
 	local add=false
 	local line=''

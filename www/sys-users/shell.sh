@@ -15,7 +15,7 @@ case $1 in
 				<td>$2</td><!-- term -->
 				<td>$4 $3 $5</td><!-- date -->
 				<td>$HOST</td><!-- ip -->
-				<td>"'<button type="submit" name="kick_user" value="'"$2"'">Kick</button></td>
+				<td>"'<button class="system_button" type="submit" name="kick_user" value="'"$2"'">Kick</button></td>
 			</tr>'
 		}
 		if ! last | grep 'still logged in' > /dev/null 2>&1; then

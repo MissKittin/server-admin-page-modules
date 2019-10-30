@@ -1,4 +1,4 @@
-<?php include($system_location_php . '/lib/login/login.php'); ?>
+<?php include($system['location_php'] . '/lib/login/login.php'); ?>
 <?php
 	switch($_GET['do'])
 	{
@@ -9,7 +9,7 @@
 			shell_exec('reboot');
 			break;
 		case 'suspend':
-			shell_exec('nohup ' . $system_location_php . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh suspend > /dev/null 2>&1 &');
+			shell_exec('nohup ' . $system['location_php'] . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh suspend > /dev/null 2>&1 &');
 			break;
 	}
 ?>
@@ -17,7 +17,7 @@
 <html>
 	<head>
 		<title>Shutdown</title>
-		<?php include($system_location_php . '/lib/htmlheaders.php'); ?>
+		<?php include($system['location_php'] . '/lib/htmlheaders.php'); ?>
 		<?php include 'favicon.php'; ?>
 	</head>
 	<body>

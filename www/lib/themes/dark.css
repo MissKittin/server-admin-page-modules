@@ -1,0 +1,40 @@
+/* dark theme */
+/* 28.10.2019 */
+
+/* variables */
+:root {
+	--content_border-color: #aaaaaa; /* border color */
+	--content_text-color: #ffffff; /* default text color */
+}
+
+/* menu */
+#system_body #system_menu a, #system_body #system_menu a:hover, #system_body #system_menu a:visited {
+	text-decoration: none;
+	color: #cccccc;
+}
+#system_body #system_menu {
+	color: #ff0000;
+}
+
+/* page */
+body {
+	color: var(--content_text-color);
+	background-color: #000000;
+}
+#system_body #system_content {
+	margin-left: 201px;
+}
+#system_body #system_content a, #system_body #system_content a:hover, #system_body #system_content a:visited {
+	color: #cccccc;
+}
+
+/* links without decorations */
+#system_body #system_content .content_noDecorations, #system_login_content .content_noDecorations {
+	text-decoration: none;
+	color: #0ff0ff !important;
+}
+
+/* warning messages */
+#system_body #system_content .content_warning, #system_login_content .content_warning {
+	color: #ff0000;
+}

@@ -1,4 +1,4 @@
-<?php include($system_location_php . '/lib/prevent-direct.php'); prevent_direct('config.php'); ?>
+<?php include($system['location_php'] . '/lib/prevent-direct.php'); prevent_direct('config.php'); ?>
 <?php
 	// storage configuration - ram disks
 

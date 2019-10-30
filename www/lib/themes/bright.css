@@ -1,0 +1,33 @@
+/* bright theme */
+/* 27.10.2019 */
+
+/* variables */
+:root {
+	--content_border-color: #000000; /* border color */
+	--content_text-color: #000000; /* default text color */
+}
+
+/* menu */
+#system_body #system_menu a, #system_body #system_menu a:hover, #system_body #system_menu a:visited {
+	text-decoration: none;
+	color: #0000ff;
+}
+
+/* page */
+body {
+	background-color: #eeedd0;
+}
+#system_body #system_content {
+	margin-left: 201px;
+}
+
+/* links without decorations */
+#system_body #system_content .content_noDecorations, #system_login_content .content_noDecorations {
+	text-decoration: none;
+	color: #0000ff;
+}
+
+/* warning messages */
+#system_body #system_content .content_warning, #system_login_content .content_warning {
+	color: #ff0000;
+}
