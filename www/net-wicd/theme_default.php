@@ -21,6 +21,7 @@
 /* global for all windows */
 	.wicd_window {
 		background-color: #999999;
+		color: #000000;
 	}
 	.wicd_titleBar {
 		background-color: #000099;
@@ -39,4 +40,11 @@
 	}
 	.wicd_contentNetworksNetworkName {
 		font-weight: bold;
+		color: #000000;
+	}
+	.wicd_contentNetworksNetworkDetails {
+		color: #000000;
+	}
+	#wicd_status {
+		color: #000000;
 	}
