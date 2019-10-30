@@ -35,6 +35,6 @@ run setup.sh after clone<br><br>
 storage<br>
 ![storage](https://github.com/MissKittin/server-admin-page-modules/blob/master/storage.png)<br><br>
 sys-notifications<br>
-![notifications](https://github.com/MissKittin/server-admin-page-modules/blob/master/sys-notifications.png)<br>
+![notifications](https://github.com/MissKittin/server-admin-page-modules/blob/master/sys-notifications.png)<br><br>
 wicd php gui<br>
 ![wicd](https://raw.githubusercontent.com/MissKittin/server-admin-page-modules/master/net-wicd.png)
