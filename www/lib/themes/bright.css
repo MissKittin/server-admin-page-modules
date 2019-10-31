@@ -5,6 +5,7 @@
 :root {
 	--content_border-color: #000000; /* border color */
 	--content_text-color: #000000; /* default text color */
+	--content_background-color: #eeedd0; /* default background color */
 }
 
 /* menu */
@@ -15,7 +16,7 @@
 
 /* page */
 body {
-	background-color: #eeedd0;
+	background-color: var(--content_background-color);
 }
 #system_body #system_content {
 	margin-left: 201px;
