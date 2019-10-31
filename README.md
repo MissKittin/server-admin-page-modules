@@ -19,7 +19,8 @@ internet-info -> list public IPv4<br>
 check-dash -> check if dash is installed (for shellscripts)<br><br>
 
 headers:<br>
-module-compatibility -> run older modules on server-admin-page v3.1<br><br>
+module-compatibility -> run older modules on server-admin-page v3.1<br>
+mobileview -> adjust layout for mobile devices<br><br>
 
 themes:<br>
 bright -> default theme with better colors<br>
