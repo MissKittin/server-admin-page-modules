@@ -38,4 +38,8 @@ storage<br>
 sys-notifications<br>
 ![notifications](https://github.com/MissKittin/server-admin-page-modules/blob/master/sys-notifications.png)<br><br>
 wicd php gui<br>
-![wicd](https://raw.githubusercontent.com/MissKittin/server-admin-page-modules/master/net-wicd.png)
+![wicd](https://raw.githubusercontent.com/MissKittin/server-admin-page-modules/master/net-wicd.png)<br><br>
+mobileview<br>
+![mobileview1](https://raw.githubusercontent.com/MissKittin/server-admin-page-modules/master/preview_mobileview1.png)
+![mobileview2](https://raw.githubusercontent.com/MissKittin/server-admin-page-modules/master/preview_mobileview2.png)
+
