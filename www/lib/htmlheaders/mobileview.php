@@ -1,5 +1,4 @@
 <?php // mobile view mod, 31.10.2019 ?>
-<?php include($system['location_php'] . '/lib/prevent-direct.php'); prevent_direct('mobileview.php'); ?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--[if !IE]><!--><script>
 document.addEventListener('DOMContentLoaded', function(){
