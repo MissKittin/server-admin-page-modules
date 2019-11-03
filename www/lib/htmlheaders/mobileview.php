@@ -36,8 +36,8 @@ document.addEventListener('DOMContentLoaded', function(){
 									text-decoration: none; \
 									text-align: center; \
 									position: absolute; \
-									bottom: 10px; left: 1%; \
-									width: 91%; \
+									bottom: 10px; \
+									left: 2px; right: 2px; \
 								" onclick=" \
 									getElementById(' + "'" + 'mobileview_about' + "'" + ').style.display=' + "'" + 'none' + "'" + '; \
 									document.body.style.overflow=' + "'" + 'visible' + "'" + '; \
