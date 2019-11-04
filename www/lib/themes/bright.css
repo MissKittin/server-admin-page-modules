@@ -17,9 +17,10 @@
 /* page */
 body {
 	background-color: var(--content_background-color);
+	background-color: #eeedd0; /* for older browsers */
 }
 #system_body #system_content {
-	margin-left: 201px;
+	margin-left: 201px; /* comment this if you use default menu module */
 }
 
 /* links without decorations */
