@@ -20,10 +20,12 @@
 /* page */
 body {
 	color: var(--content_text-color);
+	color: #ffffff; /* for older browsers */
 	background-color: var(--content_background-color);
+	background-color: #000000; /* for older browsers */
 }
 #system_body #system_content {
-	margin-left: 201px;
+	margin-left: 201px; /* comment this if you use default menu module */
 }
 #system_body #system_content a, #system_body #system_content a:hover, #system_body #system_content a:visited {
 	color: #cccccc;
