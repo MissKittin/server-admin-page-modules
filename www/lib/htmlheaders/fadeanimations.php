@@ -2,12 +2,12 @@
 	// fade-in/out animations
 	// 04.11.2019
 ?>
-<style>
+<!--[if !IE]><!--><style>
 	body {
 		opacity: 0;
 	}
 </style>
-<!--[if !IE]><!--><script>
+<script>
 	/* load animation */
 	document.addEventListener('DOMContentLoaded', function(){
 		var bodyOpacity=0;
