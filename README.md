@@ -19,6 +19,7 @@ internet-info -> list public IPv4<br>
 check-dash -> check if dash is installed (for shellscripts)<br><br>
 
 headers:<br>
+fadeanimations -> fade in/out animations on body load/unload<br>
 module-compatibility -> run older modules on server-admin-page v3.1<br>
 mobileview -> adjust layout for mobile devices<br><br>
 
