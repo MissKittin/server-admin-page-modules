@@ -34,6 +34,9 @@ www.rc -> for notifications home plugin (put it in /usr/local/etc/notify-daemon/
 
 run setup.sh after clone<br><br>
 
+# updates
+mobileview: v1.1 with animations, if you want v1, change `var useAnimations=true;` to `var useAnimations=false;`<br><br>
+
 # screenshots
 storage<br>
 ![storage](https://github.com/MissKittin/server-admin-page-modules/blob/master/storage.png)<br><br>
