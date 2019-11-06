@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function(){
 							bottom: 10px; \
 							left: 2px; right: 2px; \
 						" onclick=" \
-							document.body.style.overflow=' + "'" + 'visible' + "'" + '; \
 							aboutOpacity=1; \
 							function animateAboutOut() \
 							{ \
@@ -59,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function(){
 									{ \
 										document.getElementById(' + "'" + 'mobileview_about' + "'" + ').style.opacity=' + "'" + '0' + "'" + ';  \
 										getElementById(' + "'" + 'mobileview_about' + "'" + ').style.display=' + "'" + 'none' + "'" + '; \
+										document.body.style.overflow=' + "'" + 'visible' + "'" + '; \
 									} \
 								}, 1); \
 							} \
