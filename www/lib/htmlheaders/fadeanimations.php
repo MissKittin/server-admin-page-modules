@@ -2,7 +2,8 @@
 	// fade-in/out animations
 	// 04.11.2019
 ?>
-<!--[if !IE]><!--><style>
+<!--[if !IE]><!-->
+<style>
 	body {
 		opacity: 0;
 	}
@@ -45,4 +46,5 @@
 		}
 		animate();
 	};
-</script><!--<![endif]-->
+</script>
+<!--<![endif]-->
