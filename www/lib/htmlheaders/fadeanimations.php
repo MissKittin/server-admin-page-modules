@@ -10,7 +10,7 @@
 </style>
 <script>
 	/* load animation */
-	document.addEventListener('DOMContentLoaded', function(){
+	window.onload=function(){
 		var bodyOpacity=0;
 		function animate()
 		{
@@ -26,7 +26,7 @@
 			}, 1);
 		}
 		animate();
-	});
+	};
 
 	/* exit animation */
 	window.onbeforeunload=function(){
