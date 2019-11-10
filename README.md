@@ -35,7 +35,8 @@ www.rc -> for notifications home plugin (put it in /usr/local/etc/notify-daemon/
 run setup.sh after clone<br><br>
 
 # updates
-mobileview: v1.1 with animations, if you want v1, change `var useAnimations=true;` to `var useAnimations=false;`<br><br>
+mobileview: v1.1 with animations, if you want v1, change `var useAnimations=true;` to `var useAnimations=false;`<br>
+fadeanimations: now doesn't blocking application in older browsers<br><br>
 
 # screenshots
 storage<br>
