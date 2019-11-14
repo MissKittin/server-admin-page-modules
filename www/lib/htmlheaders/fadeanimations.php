@@ -1,6 +1,12 @@
 <?php
 	// fade-in/out animations
 	// 04.11.2019
+
+	/* Warning!
+		if fadeanimations are enabled
+		window.onload and window.onbeforeunload is reserved only for this.
+		in modules use document.addEventListener('DOMContentLoaded', function(){});
+	*/
 ?>
 <!--[if !IE]><!-->
 <style>
