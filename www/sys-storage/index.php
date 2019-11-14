@@ -26,14 +26,13 @@
 			}
 		</style>
 		<script type="text/javascript">
-			function start()
-			{
+			document.addEventListener('DOMContentLoaded', function(){
 				document.getElementById("ram-usage").style.color=document.getElementById("ram-bar-usage").style.backgroundColor;
 				return;
-			}
+			});
 		</script>
 	</head>
-	<body onLoad="javascript:start();">
+	<body>
 		<?php include($system['location_php'] . '/lib/header.php'); ?>
 		<div id="system_body">
 			<?php include($system['location_php'] . '/lib/menu/menu.php'); ?>
