@@ -39,6 +39,9 @@ run setup.sh after clone<br><br>
 mobileview: v1.1 with animations, if you want v1, change `var useAnimations=true;` to `var useAnimations=false;`<br>
 fadeanimations: now doesn't blocking application in older browsers<br><br>
 
+# for developers
+if fadeanimations are enabled, window.onload and window.onbeforeunload is reserved only for this.<br><br>
+
 # screenshots
 storage<br>
 ![storage](https://github.com/MissKittin/server-admin-page-modules/blob/master/storage.png)<br><br>
