@@ -1,7 +1,8 @@
 # server-admin-page-modules
 several modules that are less dependent on my configuration<br>
 compatible with server-admin-page v3.1<br>
-system core: https://github.com/MissKittin/server-admin-page<br><br>
+system core: https://github.com/MissKittin/server-admin-page<br>
+whole project: https://github.com/MissKittin/debian-router<br><br>
 
 net-wifi -> control wicd (dependent of jquery, deprecated)<br>
 net-wicd -> wicd php gui v2, standalone version: https://github.com/MissKittin/wicd-php-gui<br>
