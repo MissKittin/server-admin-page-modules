@@ -33,7 +33,13 @@ additional files:<br>
 apt-check -> for sys-updates<br>
 www.rc -> for notifications home plugin (put it in /usr/local/etc/notify-daemon/journal-manager.rc.d)<br><br>
 
-run setup.sh after clone<br><br>
+**run setup.sh after clone**<br><br>
+
+# how to update
+after setup `chown -R root:root *` (of course as root) and `tar cvf ../update.tar *`.<br>
+transfer update.tar to document root (in debian router /usr/local/share/www) and `tar xvf update.tar; rm update.tar` (as root)<br>
+done!
+<br><br>
 
 # updates
 mobileview: v1.1 with animations, if you want v1, change `var useAnimations=true;` to `var useAnimations=false;`<br>
