@@ -21,6 +21,9 @@ cd ../shell
 [ -e index.php ] && rm index.php
 ln -s ../prevent-index.php index.php
 
+echo 'superuser'
+chmod 750 ./superuser.sh
+
 echo '01_internet-info'
 cd ../../login-plugins/01_internet-info
 [ -e index.php ] && rm index.php
@@ -49,6 +52,10 @@ chmod 755 wicd-config-injection.sh
 
 echo 'power'
 cd ../power
+chmod 755 shell.sh
+
+echo 'sys-clock'
+cd ../sys-clock
 chmod 755 shell.sh
 
 echo 'sys-storage'

@@ -1,4 +1,4 @@
-<?php include($system['location_php'] . '/lib/prevent-direct.php'); prevent_direct('check-dash.php'); ?>
+<?php if(!function_exists('prevent_direct')) include($system['location_php'] . '/lib/prevent-direct.php'); prevent_direct('check-dash.php'); ?>
 <?php
 	if(!file_exists('/bin/sh'))
 	{

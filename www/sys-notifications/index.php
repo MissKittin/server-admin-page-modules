@@ -1,7 +1,7 @@
 <?php include($system['location_php'] . '/lib/login/login.php'); ?>
 <?php chdir($system['location_php']); ?>
 <?php
-	if(isset($_GET['action']))
+	if((isset($_GET['action'])) && (csrf_checkToken('get')))
 	{
 		switch ($_GET['action'])
 		{
@@ -27,7 +27,7 @@
 			<div id="system_content">
 				<h1>Notifications</h1>
 				Daemon: <?php echo shell_exec($system['location_php'] . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh notify-daemon-settings status');?>
-				<?php echo shell_exec($system['location_php'] . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh notify-daemon-settings print'); // notify-daemon-settings print $3 is not needed anymore ?>
+				<?php echo shell_exec($system['location_php'] . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh notify-daemon-settings print ' . csrf_printToken('parameter').' '.csrf_printToken('value')); // notify-daemon-settings print csrfTokenParam csrfTokenVal ?>
 			</div>
 		</div>
 	</body>

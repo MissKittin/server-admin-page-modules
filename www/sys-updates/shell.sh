@@ -1,4 +1,5 @@
-#!/bin/dash
+#!/usr/local/share/router/webadmin/www/lib/shell/superuser.sh /bin/dash
+#?php has_superuser_shebang
 
 # Import PATH variable
 if [ -e ./lib/shell/path.rc ]; then

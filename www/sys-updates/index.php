@@ -1,5 +1,6 @@
 <?php include($system['location_php'] . '/lib/login/login.php'); ?>
 <?php chdir($system['location_php']); ?>
+<?php if(!csrf_checkToken('get')){ include($system['location_php'] . '/lib/prevent-index.php'); exit(); } ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -17,7 +18,7 @@
 				document.getElementById('eol').style.visibility = "hidden";
 				document.getElementById('update').style.height="800px";
 				document.getElementById('update').style.width="600px";
-				document.getElementById("update").innerHTML='<object id="updateobject" type="text/html" data="<?php echo $system['location_html']; ?>/sys-updates/shell.php?shell-command=apt-update"></object>';
+				document.getElementById("update").innerHTML='<object id="updateobject" type="text/html" data="<?php echo $system['location_html']; ?>/sys-updates/shell.php?shell-command=apt-update&<?php echo csrf_printToken('parameter'); ?>=<?php echo csrf_printToken('value'); ?>"></object>';
 			}
 		</script>
 	</head>
@@ -34,7 +35,7 @@
 				<div id="eol" style="position: absolute; bottom: 0px;">
 					<span style="font-weight: bold;">End of life: <?php echo shell_exec($system['location_php'] . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh system-eol'); ?></span>
 				</div>
-				<div id="update">
+				<div id="update" style="border-radius: 5px;">
 					<!-- reserved for apt-get update -->
 				</div>
 			</div>

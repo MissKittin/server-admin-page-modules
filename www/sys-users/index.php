@@ -1,10 +1,8 @@
 <?php include($system['location_php'] . '/lib/login/login.php'); ?>
 <?php chdir($system['location_php']); ?>
 <?php
-	if(isset($_POST['kick_user']))
-	{
-		shell_exec('/usr/bin/pkill -9 -t ' . $_POST['kick_user']);
-	}
+	if((isset($_POST['kick_user'])) && (csrf_checkToken('post')))
+		shell_exec($system['location_php'] . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh kick_user ' . $_POST['kick_user']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,12 +10,8 @@
 		<title>Logged users</title>
 		<?php include($system['location_php'] . '/lib/htmlheaders.php'); ?>
 		<style type="text/css">
-			table {
-				border: 1px solid var(--content_border-color);
-			}
-			th, td {
-				white-space: nowrap;
-			}
+			table { border: 1px solid var(--content_border-color); }
+			th, td { white-space: nowrap; }
 		</style>
 	</head>
 	<body>
@@ -31,6 +25,7 @@
 						<tr><th>User</th><th>Term</th><th>Date</th><th>IP</th></tr>
 						<?php echo shell_exec($system['location_php'] . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh logged_users'); ?>
 					</table>
+					<?php echo csrf_injectToken(); ?>
 				</form>
 			</div>
 		</div>

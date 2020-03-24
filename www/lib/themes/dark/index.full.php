@@ -1,3 +1,5 @@
+<?php header('Content-Type: text/css; X-Content-Type-Options: nosniff;'); ?>
+<?php header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 3600) . ' GMT'); header('Pragma: cache'); header('Cache-Control: max-age=3600'); ?>
 /* dark theme */
 /* 28.10.2019 */
 

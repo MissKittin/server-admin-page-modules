@@ -1,4 +1,4 @@
-<?php // mobile view mod, 31.10.2019, 02.11.2019 ?>
+<?php // mobile view mod, 31.10.2019, 02.11.2019, minified 20.03.2020 ?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--[if !IE]><!--><script>
 document.addEventListener('DOMContentLoaded', function(){
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function(){
 									} \
 									else \
 										document.getElementById(' + "'" + 'mobileview_about' + "'" + ').style.opacity=' + "'" + '1' + "'" + ';  \
-								}, 1); \
+						}, 1); \
 							} \
 							animateAboutIn(); \
 					" \

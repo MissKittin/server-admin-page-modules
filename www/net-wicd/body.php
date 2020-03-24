@@ -1,4 +1,4 @@
-<?php include($system['location_php'] . '/lib/prevent-direct.php'); prevent_direct('body.php'); ?>
+<?php if(!function_exists('prevent_direct')) include($system['location_php'] . '/lib/prevent-direct.php'); prevent_direct('body.php'); ?>
 <?php
 	// wicd php gui - frontend
 	// 22.10.2019 - 26.10.2019

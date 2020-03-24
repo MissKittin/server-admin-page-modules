@@ -1,4 +1,5 @@
-#!/bin/dash
+#!/usr/local/share/router/webadmin/www/lib/shell/superuser.sh /bin/dash
+#?php has_superuser_shebang
 # Command stack: notify-daemon-state.sh, notify-daemon.sh, mv, grep, sed
 
 # Import PATH variable
@@ -11,7 +12,8 @@ case $1 in
 	'notify-daemon-settings')
 		case $2 in
 			'print')
-				notify-daemon-state.sh www $3
+				# $2 -> link (empty), $3 -> csrfTokenParam, $4 -> csrfTokenVal
+				notify-daemon-state.sh www '' "&${3}=${4}"
 			;;
 			'status')
 				exec $0 check_special_service notify-daemon.sh

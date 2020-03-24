@@ -4,10 +4,14 @@
 <?php
 	// wicd php gui - jquery backend
 	// 22.10.2019 - 26.10.2019
+	// csrf protection 19.03.2020
 
 	// filetype header
 	header("Content-type: text/javascript; charset: UTF-8");
 	header("Cache-Control: must-revalidate");
+
+	// generate unique token and store it on server side
+	$_SESSION['wicd_csrfToken']=substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 32);
 ?>
 
 // settings
@@ -16,6 +20,9 @@ var wicd_debugFlag=false; // enable/disable console.log()
 // flags
 var wicd_startFlag=true; // if an error occured
 /* var wicd_addNetworkName is defined on body and removed on add network window close */
+
+// auto-generated flags
+var wicd_csrfToken='&wicd_csrfToken=<?php echo $_SESSION['wicd_csrfToken']; ?>'; // send token on client side
 
 /* starter */
 $(document).ready(function(){
@@ -52,7 +59,7 @@ function wicd_defineEvents()
 		/* apply settings */
 		$("#wicd_settingsApply").click(function(){
 			var wirelessInterface=$('#wicd_settingsWirelessInterface').val();
-			$.get('<?php echo $_GET['root']; ?>/shell.php?wicd=setWifiDevice&device=' + wirelessInterface, function(data){
+			$.get('<?php echo $_GET['root']; ?>/shell.php?wicd=setWifiDevice&device=' + wirelessInterface + wicd_csrfToken, function(data){
 				if(wicd_debugFlag) console.log('event: settingsApply: set wireless interface to ' + wirelessInterface + ', server returned ' + data);
 			});
 
@@ -97,7 +104,7 @@ function wicd_defineEvents()
 			var password=$('#wicd_enterPasswordText').val();
 			if(password != '')
 			{
-				$.get('<?php echo $_GET['root']; ?>/shell.php?wicd=saveNetwork&networkName=' + wicd_addNetworkName + '&networkPassword=' + password, function(data){
+				$.get('<?php echo $_GET['root']; ?>/shell.php?wicd=saveNetwork&networkName=' + wicd_addNetworkName + '&networkPassword=' + password + wicd_csrfToken, function(data){
 					if(wicd_debugFlag) console.log('event: wicd_saveNetwork: server returned ' + data);
 				});
 
@@ -141,14 +148,14 @@ function wicd_defineEvents()
 
 		/* disconnect button */
 		$("#wicd_disconnect").click(function(){
-			$.get('<?php echo $_GET['root']; ?>/shell.php?wicd=disconnect', function(data){
+			$.get('<?php echo $_GET['root']; ?>/shell.php?wicd=disconnect' + wicd_csrfToken, function(data){
 				if(wicd_debugFlag) console.log('event: disconnect button clicked, server returned ' + data);
 			});
 		});
 
 		/* open settings button */
 		$("#wicd_showSettings").click(function(){
-			$.get('<?php echo $_GET['root']; ?>/shell.php?wicd=getWifiDevice', function(data){
+			$.get('<?php echo $_GET['root']; ?>/shell.php?wicd=getWifiDevice' + wicd_csrfToken, function(data){
 				$('#wicd_settingsWirelessInterface').val(data);
 			});
 
@@ -171,7 +178,7 @@ function wicd_defineEvents()
 
 		/* connect to network */
 		$(".wicd_connectToNetwork").click(function(){
-			$.get('<?php echo $_GET['root']; ?>/shell.php?wicd=connect&network=' + wicd_connectToNetworkName, function(data){
+			$.get('<?php echo $_GET['root']; ?>/shell.php?wicd=connect&network=' + wicd_connectToNetworkName + wicd_csrfToken, function(data){
 				if(wicd_debugFlag) console.log('event: connect to ' + wicd_connectToNetworkName + ', server returned ' + data);
 				wicd_getNetworkList();
 			});
@@ -181,11 +188,11 @@ function wicd_defineEvents()
 		$(".wicd_contentNetworksNetworkAutoconnect").change(function(){
 			var checkboxname=$(this).attr('name');
 			if(this.checked)
-				$.get('<?php echo $_GET['root']; ?>/shell.php?wicd=setAutoconnect&state=true&network=' + checkboxname, function(data){
+				$.get('<?php echo $_GET['root']; ?>/shell.php?wicd=setAutoconnect&state=true&network=' + checkboxname + wicd_csrfToken, function(data){
 					if(wicd_debugFlag) console.log('event: contentNetworksNetworkAutoconnect: enabled for ' + checkboxname + ', server returned ' + data);
 				});
 			else
-				$.get('<?php echo $_GET['root']; ?>/shell.php?wicd=setAutoconnect&state=false&network=' + checkboxname, function(data){
+				$.get('<?php echo $_GET['root']; ?>/shell.php?wicd=setAutoconnect&state=false&network=' + checkboxname + wicd_csrfToken, function(data){
 					if(wicd_debugFlag) console.log('event: contentNetworksNetworkAutoconnect: disabled for ' + checkboxname + ', server returned ' + data);
 				});
 		});
@@ -199,10 +206,10 @@ function wicd_getNetworkList()
 	if(wicd_debugFlag) console.log('getNetworkList: getting network list...');
 	$("#wicd_contentNetworks").html('<div id="wicd_contentNetworksActiontext">Searching...</div>');
 
-	$.get('<?php echo $_GET['root']; ?>/shell.php?wicd=checkWifiDevice', function(data){ // check if wifi device is connected
+	$.get('<?php echo $_GET['root']; ?>/shell.php?wicd=checkWifiDevice' + wicd_csrfToken, function(data){ // check if wifi device is connected
 		if(data == 'true')
 		{ // download data
-			$.getJSON('<?php echo $_GET['root']; ?>/shell.php?wicd=getNetworkList', function(data){
+			$.getJSON('<?php echo $_GET['root']; ?>/shell.php?wicd=getNetworkList' + wicd_csrfToken, function(data){
 				if(data == '') // if no networks available
 					$("#wicd_contentNetworks").html('<div id="wicd_contentNetworksActiontext">No networks available</div>');
 				else
@@ -261,6 +268,6 @@ function wicd_getNetworkList()
 function wicd_getConnectionStatus()
 {
 	if(wicd_debugFlag) console.log('getConnectionStatus: started...');
-	$('#wicd_status').load('<?php echo $_GET['root']; ?>/shell.php?wicd=getConnectionStatus');
+	$('#wicd_status').load('<?php echo $_GET['root']; ?>/shell.php?wicd=getConnectionStatus' + wicd_csrfToken);
 	if(wicd_debugFlag) console.log('getConnectionStatus: connection status refreshed');
 }

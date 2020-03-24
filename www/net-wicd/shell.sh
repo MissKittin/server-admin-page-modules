@@ -1,4 +1,5 @@
-#!/bin/dash
+#!/usr/local/share/router/webadmin/www/lib/shell/superuser.sh /bin/dash
+#?php has_superuser_shebang
 # wicd php gui - shellscript backend
 # 22.10.2019 - 26.10.2019
 # Command stack: dash wicd-cli which tail cat grep tr ifconfig sed iwconfig

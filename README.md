@@ -43,7 +43,8 @@ done!
 
 # updates
 mobileview: v1.1 with animations, if you want v1, change `var useAnimations=true;` to `var useAnimations=false;`<br>
-fadeanimations: now doesn't blocking application in older browsers<br><br>
+fadeanimations: now doesn't blocking application in older browsers<br>
+csrf prevention implemented in all modules<br><br>
 
 # for developers
 if fadeanimations are enabled, window.onload and window.onbeforeunload is reserved only for this.<br><br>
@@ -58,4 +59,3 @@ wicd php gui<br>
 mobileview<br>
 ![mobileview1](https://raw.githubusercontent.com/MissKittin/server-admin-page-modules/master/preview_mobileview1.png)
 ![mobileview2](https://raw.githubusercontent.com/MissKittin/server-admin-page-modules/master/preview_mobileview2.png)
-
