@@ -1,13 +1,17 @@
 #!/bin/sh
 
-echo '05_notifications'
-cd home-plugins/05_notifications
-[ -e index.php ] && rm index.php
-ln -s ../../lib/prevent-index.php index.php
-chmod 755 shell.sh
-
 echo 'range_icons'
-cd ../../lib/range_icons
+cd lib/range_icons
+[ -e index.php ] && rm index.php
+ln -s ../prevent-index.php index.php
+
+echo 'console'
+cd ../console
+chmod 755 check-command-stack.sh
+ln -s ../prevent-index.php index.php
+
+echo 'favicon'
+cd ../favicon
 [ -e index.php ] && rm index.php
 ln -s ../prevent-index.php index.php
 
@@ -24,8 +28,20 @@ ln -s ../prevent-index.php index.php
 echo 'superuser'
 chmod 750 ./superuser.sh
 
+echo 'themes'
+cd ../themes
+ln -s ../prevent-index.php index.php
+
+echo 'themes/bright'
+cd bright
+ln -s index.min.php index.php
+
+echo 'themes/dark'
+cd ../dark
+ln -s index.min.php index.php
+
 echo '01_internet-info'
-cd ../../login-plugins/01_internet-info
+cd ../../../login-plugins/01_internet-info
 [ -e index.php ] && rm index.php
 ln -s ../../lib/prevent-index.php index.php
 chmod 755 shell.sh
@@ -45,14 +61,38 @@ echo 'net-wifi'
 cd ../../net-wifi
 chmod 755 shell.sh
 
+echo 'net-ap'
+cd ../net-ap
+chmod 755 shell.sh
+
+echo 'net-bwusage'
+cd ../net-bwusage
+chmod 755 shell.sh
+cd script
+ln -s index.min.php index.php
+cd ../style
+ln -s index.min.php index.php
+
+echo 'net-devices'
+cd ../../net-devices
+chmod 755 shell.sh
+
+echo 'net-wired'
+cd ../net-wired
+chmod 755 shell.sh
+
+echo 'sys-daemons'
+cd ../sys-daemons
+chmod 755 shell.sh
+
+echo 'sys-logs'
+cd ../sys-logs
+chmod 755 shell.sh
+
 echo 'net-wicd'
 cd ../net-wicd
 chmod 755 shell.sh
 chmod 755 wicd-config-injection.sh
-
-echo 'power'
-cd ../power
-chmod 755 shell.sh
 
 echo 'sys-clock'
 cd ../sys-clock
@@ -61,13 +101,13 @@ chmod 755 shell.sh
 echo 'sys-storage'
 cd ../sys-storage
 chmod 755 shell.sh
-
-echo 'sys-notifications'
-cd ../sys-notifications
-chmod 755 shell.sh
+cd script
+ln -s index.min.php index.php
+cd ../style
+ln -s index.min.php index.php
 
 echo 'sys-sensors'
-cd ../sys-sensors
+cd ../../sys-sensors
 chmod 755 shell.sh
 
 echo 'sys-updates'
@@ -125,6 +165,28 @@ while true; do
 	if [ "$answer" = 'y' ]; then
 		echo 'rm net-wifi'
 		rm -r net-wifi
+		break
+	fi
+	[ "$answer" = 'n' ] && break
+done
+
+while true; do
+	echo; echo -n 'remove deprecated net-ap module? [y/n] '
+	read answer
+	if [ "$answer" = 'y' ]; then
+		echo 'rm net-ap'
+		rm -r net-ap
+		break
+	fi
+	[ "$answer" = 'n' ] && break
+done
+
+while true; do
+	echo; echo -n 'remove deprecated sys-updates module? [y/n] '
+	read answer
+	if [ "$answer" = 'y' ]; then
+		echo 'rm sys-updates'
+		rm -r sys-updates
 		break
 	fi
 	[ "$answer" = 'n' ] && break

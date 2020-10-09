@@ -1,0 +1,5 @@
+# public-ipv4.rc config
+PUBLIC_IP4_TEST_ADDRESS='http://ipinfo.io/ip'
+
+# check-ipv6.rc config
+CHECK_IP6_TEST_ADDRESS='ipv6.google.com'

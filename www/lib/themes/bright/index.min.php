@@ -1,0 +1,4 @@
+<?php if(!function_exists('prevent_direct')) include($system['location_php'] . '/lib/prevent-direct.php'); prevent_direct('index.min.php'); ?>
+<?php header('Content-Type: text/css; X-Content-Type-Options: nosniff;'); ?>
+<?php header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 3600) . ' GMT'); header('Pragma: cache'); header('Cache-Control: max-age=3600'); ?>
+:root{--content_border-color:#000;--content_text-color:#000;--content_background-color:#eeedd0}#system_body #system_menu a,#system_body #system_menu a:hover,#system_body #system_menu a:visited{text-decoration:none;color:#00f}body{background-color:var(--content_background-color);background-color:#eeedd0}#system_body #system_content{margin-left:201px}#system_body #system_content .content_noDecorations,#system_login_content .content_noDecorations{text-decoration:none;color:#00f}#system_body #system_content .content_warning,#system_login_content .content_warning{color:red}

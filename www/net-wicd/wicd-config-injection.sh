@@ -1,8 +1,8 @@
-#!/usr/local/share/router/webadmin/www/lib/shell/superuser.sh /bin/bash
+#!/usr/local/share/router/webadmin/share/webadmin/lib/shell/superuser.sh /bin/bash
 #?php has_superuser_shebang
 # wicd config variable injection
 # 25.10.2019
-# Command stack: mktemp cat read grep rm
+# Command stack: mktemp cat grep rm
 
 # Automatic settings
 WICD_SAVED_APS="$1"

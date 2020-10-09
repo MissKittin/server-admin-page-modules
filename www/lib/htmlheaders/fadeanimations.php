@@ -1,6 +1,7 @@
 <?php
 	// fade-in/out animations
 	// 04.11.2019
+	// opacity=1 when js is disabled 07.07.2020
 
 	/* Warning!
 		if fadeanimations are enabled
@@ -14,6 +15,13 @@
 		opacity: 0;
 	}
 </style>
+<noscript>
+	<style>
+		body {
+			opacity: 1;
+		}
+	</style>
+</noscript>
 <script>
 	/* load animation */
 	window.onload=function(){

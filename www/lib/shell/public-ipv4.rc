@@ -1,8 +1,11 @@
 # Check public ip library
+# Command stack: wget, grep
+
+# Define PUBLIC_IP4_TEST_ADDRESS before importing
 
 case $1 in
 	'check-internet')
-		ip=$(wget -4 -q -O- --timeout=2 http://ipinfo.io/ip)
+		ip=$(wget -4 -q -O- --timeout=1 ${PUBLIC_IP4_TEST_ADDRESS})
 		[ "$2" = 'on-dashboard' ] && newline='-n' || newline='' # no newline if displayed on dashboard
 		if echo -n "$ip" | grep -E '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$' > /dev/null 2>&1; then # if ip is correct
 			if [ "$2" = 'on-dashboard' ]; then # parse for dashboard

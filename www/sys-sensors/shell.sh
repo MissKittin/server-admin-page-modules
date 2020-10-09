@@ -1,4 +1,5 @@
 #!/bin/dash
+# Command stack: dash, sensors, tail, head
 
 # Import PATH variable
 if [ -e ./lib/shell/path.rc ]; then
@@ -9,7 +10,7 @@ fi
 
 case $1 in
 	'sensors')
-		sensors  | tail -n +8 | head -n -2
+		sensors
 	;;
 esac
 

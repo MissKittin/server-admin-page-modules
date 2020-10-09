@@ -1,6 +1,6 @@
-#!/usr/local/share/router/webadmin/www/lib/shell/superuser.sh /bin/dash
+#!/usr/local/share/router/webadmin/share/webadmin/lib/shell/superuser.sh /bin/dash
 #?php has_superuser_shebang
-# Command stack: sed, last, grep, who
+# Command stack: dash, sed, last, grep, who
 
 # Import PATH variable
 . ./lib/shell/path.rc

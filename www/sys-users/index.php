@@ -1,8 +1,10 @@
 <?php include($system['location_php'] . '/lib/login/login.php'); ?>
 <?php chdir($system['location_php']); ?>
 <?php
+	$shell_sh_location=$system['location_php'] . '/sys-users/shell.sh';
+
 	if((isset($_POST['kick_user'])) && (csrf_checkToken('post')))
-		shell_exec($system['location_php'] . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh kick_user ' . $_POST['kick_user']);
+		if(strpos($_POST['kick_user'], '\'') === false) shell_exec($shell_sh_location . ' kick_user ' . '\''.$_POST['kick_user'].'\'');
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,7 +25,7 @@
 				<form action="sys-users" method="post">
 					<table>
 						<tr><th>User</th><th>Term</th><th>Date</th><th>IP</th></tr>
-						<?php echo shell_exec($system['location_php'] . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh logged_users'); ?>
+						<?php echo shell_exec($shell_sh_location . ' logged_users'); ?>
 					</table>
 					<?php echo csrf_injectToken(); ?>
 				</form>

@@ -1,6 +1,7 @@
 <?php include($system['location_php'] . '/lib/login/login.php'); ?>
 <?php chdir($system['location_php']); ?>
 <?php if(!csrf_checkToken('get')){ include($system['location_php'] . '/lib/prevent-index.php'); exit(); } ?>
+<?php $shell_sh_location=$system['location_php'] . '/sys-updates/shell.sh'; ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -28,13 +29,13 @@
 			<?php include($system['location_php'] . '/lib/menu/menu.php'); ?>
 			<div id="system_content">
 				<h1>System updates</h1>
-				Last update: <?php echo shell_exec($system['location_php'] . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh last-update'); ?> <button class="system_button" onclick="javascript:update();">Update</button><br><br>
+				Last update: <?php echo shell_exec($shell_sh_location . ' last-update'); ?> <button class="system_button" onclick="javascript:update();">Update</button><br><br>
 				<span style="font-size: 20px;">
-					<?php echo shell_exec($system['location_php'] . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh updates'); ?>
+					<?php echo shell_exec($shell_sh_location . ' updates'); ?>
 				</span><br><br>
-				<div id="eol" style="position: absolute; bottom: 0px;">
-					<span style="font-weight: bold;">End of life: <?php echo shell_exec($system['location_php'] . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh system-eol'); ?></span>
-				</div>
+				<!-- <div id="eol" style="position: absolute; bottom: 0px;">
+					<span style="font-weight: bold;">End of life: <?php /* echo shell_exec($shell_sh_location . ' system-eol'); */ ?></span>
+				</div> -->
 				<div id="update" style="border-radius: 5px;">
 					<!-- reserved for apt-get update -->
 				</div>

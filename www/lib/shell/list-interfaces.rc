@@ -1,4 +1,5 @@
 # Interface listing library
+# Command stack: firewall.sh cat grep tr ifconfig
 
 case $1 in
 	'interfaces')

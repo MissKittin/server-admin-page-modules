@@ -1,5 +1,6 @@
 <?php include($system['location_php'] . '/lib/login/login.php'); ?>
 <?php chdir($system['location_php']); ?>
+<?php $shell_sh_location=$system['location_php'] . '/sys-sensors/shell.sh'; ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -28,7 +29,7 @@
 			<div id="system_content">
 				<h1>Hardware sensors</h1>
 				<div id="sensors">
-					<pre><?php echo shell_exec($system['location_php'] . strtok($_SERVER['REQUEST_URI'], '?') . '/shell.sh sensors'); ?></pre>
+					<pre><?php echo shell_exec($shell_sh_location . ' sensors'); ?></pre>
 				</div>
 			</div>
 		</div>

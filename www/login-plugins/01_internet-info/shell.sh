@@ -1,4 +1,8 @@
 #!/bin/dash
+# Command stack: dash, dirname
+
+# Import config file
+. $(dirname "$0")/config.rc > /dev/null 2>&1 || exit 0
 
 # Import PATH variable
 if [ -e ./lib/shell/path.rc ]; then

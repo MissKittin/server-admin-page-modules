@@ -1,0 +1,2 @@
+This module is deprecated and will not be updated anymore.
+Use system-autoupdate.sh script from misc package and notify-daemon package.

@@ -1,3 +1,0 @@
-<?php
-	$category='Power management';
-?>

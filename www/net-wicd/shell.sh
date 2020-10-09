@@ -1,8 +1,8 @@
-#!/usr/local/share/router/webadmin/www/lib/shell/superuser.sh /bin/dash
+#!/usr/local/share/router/webadmin/share/webadmin/lib/shell/superuser.sh /bin/dash
 #?php has_superuser_shebang
 # wicd php gui - shellscript backend
 # 22.10.2019 - 26.10.2019
-# Command stack: dash wicd-cli which tail cat grep tr ifconfig sed iwconfig
+# Command stack: dash, readlink, wicd-cli, which, tail, cat, grep, tr, ifconfig, sed, iwconfig
 
 # Settings
 WICD_CLI='wicd-cli'
@@ -19,6 +19,10 @@ print_S4()
 {
 	echo -n "$4"
 }
+
+# No links are allowed
+WICD_SETTINGS=$(readlink -f "${WICD_SETTINGS}")
+WICD_SAVED_APS=$(readlink -f "${WICD_SAVED_APS}")
 
 case $1 in
 	'wicd')

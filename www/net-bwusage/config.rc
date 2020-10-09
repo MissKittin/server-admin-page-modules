@@ -1,0 +1,6 @@
+# . $(firewall.sh where-are-you)/networks.rc
+
+# net-bwusage data provider's backend config
+# additional_interfaces='iface0 iface1' -> define custom interface names
+# label_${iface}='Custom label' -> define interface label
+# speed_${iface}='100' -> define custom interface speed in Mb/s

@@ -1,3 +1,4 @@
+<?php if(!function_exists('prevent_direct')) include($system['location_php'] . '/lib/prevent-direct.php'); prevent_direct('index.full.php'); ?>
 <?php header('Content-Type: text/css; X-Content-Type-Options: nosniff;'); ?>
 <?php header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 3600) . ' GMT'); header('Pragma: cache'); header('Cache-Control: max-age=3600'); ?>
 /* bright theme */

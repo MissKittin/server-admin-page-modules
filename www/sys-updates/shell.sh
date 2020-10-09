@@ -1,5 +1,6 @@
-#!/usr/local/share/router/webadmin/www/lib/shell/superuser.sh /bin/dash
+#!/usr/local/share/router/webadmin/share/webadmin/lib/shell/superuser.sh /bin/dash
 #?php has_superuser_shebang
+# Command stack: dash, apt-get, apt-check, stat
 
 # Import PATH variable
 if [ -e ./lib/shell/path.rc ]; then

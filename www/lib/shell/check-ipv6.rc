@@ -1,8 +1,11 @@
 # Check ipv6 connection library
+# Command stack: ping6
+
+# Define CHECK_IP6_TEST_ADDRESS before importing
 
 case $1 in
 	'check-ipv6')
-		if ping6 -c 1 -W 1 ipv6.google.com > /dev/null 2>&1; then
+		if ping6 -c 1 -W 1 ${CHECK_IP6_TEST_ADDRESS} > /dev/null 2>&1; then
 			[ "$2" = 'on-dashboard' ] && echo 'IPv6 Internet connection: yes<br>' || echo 'IPv6 Internet connection: yes'
 		else
 			[ "$2" = 'on-dashboard' ] && echo 'IPv6 Internet connection: no<br>' || echo 'IPv6 Internet connection: no'

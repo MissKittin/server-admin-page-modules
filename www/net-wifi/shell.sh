@@ -1,5 +1,5 @@
 #!/bin/dash
-# Command stack: tr, wicd-cli, cat, grep, ifconfig, touch, rm
+# Command stack: dash, readlink, tr, wicd-cli, cat, grep, ifconfig, touch, rm
 
 # Settings
 WICD_SAVED_APS='/etc/wicd/wireless-settings.conf'
@@ -19,6 +19,10 @@ if [ -e ../lib/shell/list-interfaces.rc ]; then
 else
 	. ./lib/shell/list-interfaces.rc
 fi
+
+# No links are allowed
+WICD_SAVED_APS=$(readlink -f "${WICD_SAVED_APS}")
+WICD_SETTINGS=$(readlink -f "${WICD_SETTINGS}")
 
 case $1 in
 	'wifi')
