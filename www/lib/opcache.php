@@ -66,7 +66,7 @@
 	}
 
 	// on-boot precaching
-	if($_SERVER['REMOTE_ADDR'] === '127.0.0.1')
+	if(($_SERVER['REMOTE_ADDR'] === '127.0.0.1') && (isset($_GET['autocompile'])))
 	{
 		header('Content-Type: text/plain');
 		if(isset($no_opcache))
