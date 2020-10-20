@@ -1,4 +1,8 @@
 #!/bin/sh
+# Command stack: dash, dirname
+
+# patch "Can't open ../lib/shell/path.rc" on linked module in URI
+cd "$(dirname "${0}")/../.."
 
 # Import PATH variable
 if [ -e ./lib/shell/path.rc ]; then

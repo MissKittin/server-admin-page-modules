@@ -1,6 +1,9 @@
 #!/bin/dash
 # Command stack: dash, dirname
 
+# patch "Can't open ../lib/shell/path.rc" on linked module in URI
+cd "$(dirname "${0}")/../.."
+
 # Import config file
 . $(dirname "$0")/config.rc > /dev/null 2>&1 || exit 0
 
