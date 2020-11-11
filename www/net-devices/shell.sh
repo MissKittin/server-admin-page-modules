@@ -2,11 +2,6 @@
 #?php has_superuser_shebang
 # Command stack: dash, readlink, cat, tr, grep, awk, generate-dns-hosts.sh, sed, ebtables, tac
 # Optional command stack: firewall.sh
-# Old Command stack: dash, cat, tr, grep, awk, generate-dns-hosts.sh, sed, iptables, ip6tables, ebtables, tac
-
-# net-block commented code
-#	first column: ban by IP (only MAC method is used)
-#	second column: ban using ebtables only, added `ebtables -A INPUT -s $4 -j DROP`
 
 # Settings
 DHCP_RESERVATIONS_CONFIG='/usr/local/etc/dhcp/reservations.conf'
@@ -268,68 +263,22 @@ case $1 in
 			ebtables_ban_inputBridge="--logical-in $LAN " # space for list-devices net-block check
 		fi
 
-#		method_by='mac' # ip or mac (ip method doesn't support LAN banning)
 		case $2 in
-#			# ban ip works only for ipv4 network
 			'ban')
-#				case $method_by in
-#					'ip')
-#						# WAN & router
-#						iptables -I INPUT -s $3 -j REJECT
-#						iptables -I OUTPUT -s $3 -j REJECT
-#						iptables -I FORWARD -s $3 -j REJECT
-#					;
-#					'mac')
-	#					# WAN & router
-	#					iptables -I INPUT -m mac --mac-source $4 -j REJECT
-	#					iptables -I FORWARD -m mac --mac-source $4 -j REJECT
-	#					ip6tables -I INPUT -m mac --mac-source $4 -j REJECT
-	#					ip6tables -I FORWARD -m mac --mac-source $4 -j REJECT
-						# LAN
-						ebtables -I FORWARD ${ebtables_ban_inputBridge}-s $4 -j DROP
-						ebtables -I INPUT ${ebtables_ban_inputBridge}-s $4 -j DROP # replaces iptables rules
-#					;;
-#				esac
+				# LAN
+				ebtables -I FORWARD ${ebtables_ban_inputBridge}-s $4 -j DROP
+				ebtables -I INPUT ${ebtables_ban_inputBridge}-s $4 -j DROP # replaces iptables rules
 			;;
 			'unban')
-#				case $method_by in
-#					'ip')
-#						# WAN & router
-#						iptables -D INPUT -s $3 -j REJECT
-#						iptables -D OUTPUT -s $3 -j REJECT
-#						iptables -D FORWARD -s $3 -j REJECT
-#					;;
-#					'mac')
-	#					# WAN & router
-	#					iptables -D INPUT -m mac --mac-source $4 -j REJECT
-	#					iptables -D FORWARD -m mac --mac-source $4 -j REJECT
-	#					ip6tables -D INPUT -m mac --mac-source $4 -j REJECT
-	#					ip6tables -D FORWARD -m mac --mac-source $4 -j REJECT
-						# LAN
-						ebtables -D FORWARD ${ebtables_ban_inputBridge}-s $4 -j DROP
-						ebtables -D INPUT ${ebtables_ban_inputBridge}-s $4 -j DROP # replaces iptables rules
-#					;;
-#				esac
+				# LAN
+				ebtables -D FORWARD ${ebtables_ban_inputBridge}-s $4 -j DROP
+				ebtables -D INPUT ${ebtables_ban_inputBridge}-s $4 -j DROP # replaces iptables rules
 			;;
 			'check')
-#				case $method_by in
-#					'ip')
-#						# added --numeric to speedup listing
-#						iptables --list --numeric | grep "$3" | grep 'REJECT' > /dev/null 2>&1 && \
-#							echo -n 'banned' || \
-#							echo -n 'free'
-#					;;
-#					'mac')
-	#					# added --numeric to speedup listing
-	#					iptables --list --numeric | grep -i "$4" | grep 'REJECT' > /dev/null 2>&1 && \
-	#						echo -n 'banned' || \
-	#						echo -n 'free'
-						# read from ebtables
-						ebtables -t filter --list --Lmac2 | grep '^-s '"${4}"' '"${ebtables_ban_inputBridge}"'-j DROP' > /dev/null 2>&1 && \
-							echo -n 'banned' || \
-							echo -n 'free'
-#					;;
-#				esac
+				# read from ebtables
+				ebtables -t filter --list --Lmac2 | grep '^-s '"${4}"' '"${ebtables_ban_inputBridge}"'-j DROP' > /dev/null 2>&1 && \
+					echo -n 'banned' || \
+					echo -n 'free'
 			;;
 		esac
 	;;
