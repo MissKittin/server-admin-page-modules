@@ -5,8 +5,15 @@ cd lib/range_icons
 [ -e index.php ] && rm index.php
 ln -s ../prevent-index.php index.php
 
+echo 'login-themes/material'
+cd ../login/login-themes/material
+[ -e index.php ] && rm index.php
+ln -s ../../../prevent-index.php index.php
+cd css
+ln -s index.min.php index.php
+
 echo 'console'
-cd ../console
+cd ../../../../console
 chmod 755 check-command-stack.sh
 ln -s ../prevent-index.php index.php
 

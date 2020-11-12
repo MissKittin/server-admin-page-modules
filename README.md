@@ -50,11 +50,14 @@ if fadeanimations are enabled, window.onload and window.onbeforeunload is reserv
 
 # screenshots
 storage  
-![storage](storage.png?raw=true)<br><br>
+![storage](storage.png?raw=true)  
+
 sys-notifications  
-![notifications](sys-notifications.png?raw=true)<br><br>
+![notifications](sys-notifications.png?raw=true)  
+
 wicd php gui  
-![wicd](net-wicd.png?raw=true)<br><br>
+![wicd](net-wicd.png?raw=true)  
+
 mobileview  
-![mobileview1](preview_mobileview1.png?raw=true)
+![mobileview1](preview_mobileview1.png?raw=true)  
 ![mobileview2](preview_mobileview2.png?raw=true)
