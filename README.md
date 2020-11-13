@@ -2,7 +2,6 @@
 several modules that are less dependent on my configuration  
 compatible with server-admin-page v3.1  
 system core: https://github.com/MissKittin/server-admin-page  
-whole project: https://github.com/MissKittin/debian-router  
 
 net-wifi -> control wicd (dependent of jquery, deprecated)  
 net-wicd -> wicd php gui v2, standalone version: https://github.com/MissKittin/wicd-php-gui  
@@ -18,22 +17,11 @@ home plugins:
 notifications -> get notifications from notify-daemon (removed)  
 login plugins:  
 internet-info -> list public IPv4  
-check-dash -> check if dash is installed (for shellscripts)  
-
-headers:  
-fadeanimations -> fade in/out animations on body load/unload  
-module-compatibility -> run older modules on server-admin-page v3.1  
-mobileview -> adjust layout for mobile devices  
-
-themes:  
-bright -> default theme with better colors  
-dark  
+check-dash -> check if dash is installed (for shellscripts)   
 
 additional files:  
 apt-check -> for sys-updates  
 www.rc -> for notifications home plugin (put it in /usr/local/etc/notify-daemon/journal-manager.rc.d) (removed)  
-
-**run setup.sh after clone**  
 
 # how to update
 after setup `chown -R root:root *` (of course as root) and `tar cvf ../update.tar *`.  
@@ -44,9 +32,7 @@ done!
 mobileview: v1.1 with animations, if you want v1, change `var useAnimations=true;` to `var useAnimations=false;`  
 fadeanimations: now doesn't blocking application in older browsers  
 csrf prevention implemented in all modules  
-
-# for developers
-if fadeanimations are enabled, window.onload and window.onbeforeunload is reserved only for this.
+superuser.sh needs webadmin.pid - configuration is in this file
 
 # screenshots
 storage  

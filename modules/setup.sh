@@ -5,22 +5,23 @@ cd lib/range_icons
 [ -e index.php ] && rm index.php
 ln -s ../prevent-index.php index.php
 
-echo 'login-themes/material'
-cd ../login/login-themes/material
-[ -e index.php ] && rm index.php
-ln -s ../../../prevent-index.php index.php
-cd css
-ln -s index.min.php index.php
+#echo 'login-themes/material'
+#cd ../login/login-themes/material
+#[ -e index.php ] && rm index.php
+#ln -s ../../../prevent-index.php index.php
+#cd css
+#ln -s index.min.php index.php
 
 echo 'console'
-cd ../../../../console
+#cd ../../../../console
+cd ../console
 chmod 755 check-command-stack.sh
 ln -s ../prevent-index.php index.php
 
-echo 'favicon'
-cd ../favicon
-[ -e index.php ] && rm index.php
-ln -s ../prevent-index.php index.php
+#echo 'favicon'
+#cd ../favicon
+#[ -e index.php ] && rm index.php
+#ln -s ../prevent-index.php index.php
 
 echo 'opt_htmlheaders'
 cd ../opt_htmlheaders
@@ -35,20 +36,21 @@ ln -s ../prevent-index.php index.php
 echo 'superuser'
 chmod 750 ./superuser.sh
 
-echo 'themes'
-cd ../themes
-ln -s ../prevent-index.php index.php
+#echo 'themes'
+#cd ../themes
+#ln -s ../prevent-index.php index.php
 
-echo 'themes/bright'
-cd bright
-ln -s index.min.php index.php
+#echo 'themes/bright'
+#cd bright
+#ln -s index.min.php index.php
 
-echo 'themes/dark'
-cd ../dark
-ln -s index.min.php index.php
+#echo 'themes/dark'
+#cd ../dark
+#ln -s index.min.php index.php
 
 echo '01_internet-info'
-cd ../../../login-plugins/01_internet-info
+#cd ../../../login-plugins/01_internet-info
+cd ../../login-plugins/01_internet-info
 [ -e index.php ] && rm index.php
 ln -s ../../lib/prevent-index.php index.php
 chmod 755 shell.sh
