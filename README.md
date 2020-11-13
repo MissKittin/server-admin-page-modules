@@ -19,6 +19,9 @@ login plugins:
 internet-info -> list public IPv4  
 check-dash -> check if dash is installed (for shellscripts)   
 
+headers:
+module-compatibility -> run older modules on server-admin-page v3.1  
+
 additional files:  
 apt-check -> for sys-updates  
 www.rc -> for notifications home plugin (put it in /usr/local/etc/notify-daemon/journal-manager.rc.d) (removed)  
